@@ -8,6 +8,8 @@ import {
   groupTicketsByStatus,
   groupTicketsByUser,
   groupTicketsByPriority,
+  sortTicketsWithinGroupsByPriorityDescending,
+  sortTicketsWithinGroupsByTitleAscending
 } from "./components/utils/sortAndGroupFunctions";
 
 // import KanbanBoard from './components/KanbanBoard';
@@ -17,6 +19,7 @@ function App() {
   const [tickets, setTickets] = useState([]);
   const [groupedTickets, setGroupedTickets] = useState({});
   const [grouping, setGrouping] = useState("status"); // default grouping
+  const [sortMethod, setSortMethod] = useState('priority');
 
   useEffect(() => {
     fetch("https://api.quicksell.co/v1/internal/frontend-assignment")
@@ -56,6 +59,32 @@ function App() {
     setGroupedTickets(grouped);
   }, [tickets, grouping, users]); // Re-run this effect when tickets or grouping changes
 
+
+
+  useEffect(() => {
+    // Function to sort tickets based on the current method
+    const sortTickets = () => {
+      switch (sortMethod) {
+        case 'priority':
+          return sortTicketsWithinGroupsByPriorityDescending(groupedTickets);
+        case 'title':
+          return sortTicketsWithinGroupsByTitleAscending(groupedTickets);
+        default:
+          return groupedTickets;
+      }
+    };
+  
+    // Call the sorting function and update state
+    const sortedGroupedTickets = sortTickets();
+    
+    // Only update state if sorted tickets are different from current state to prevent infinite loop
+    if (sortedGroupedTickets !== groupedTickets) {
+      setGroupedTickets(sortedGroupedTickets);
+    }
+  }, [sortMethod]); // Removed groupedTickets from dependency array
+
+
+
   useEffect(() => {
     localStorage.setItem("grouping", grouping);
   }, [grouping]);
@@ -70,18 +99,24 @@ function App() {
   // console.log("1")
   // console.log(groupedTickets)
 
-  const handleFunctionFromChild = (parameter) => {
+  const groupByHandleFunctionFromChild = (parameter) => {
     // Do something with the parameter
     console.log(`Received parameter from child: ${parameter}`);
     setGrouping(parameter);
 
   };
 
+  const orderByHandleFunctionFromChild = (parameter) => {
+    // Do something with the parameter
+    console.log(`Received parameter from child: ${parameter}`);
+    setSortMethod(parameter);
+
+  };
+
   return (
     <div >
-      <Navbar callbackFunction={handleFunctionFromChild}/>
-      {/* <Body/> */}
-      <Body  groupedTickets={groupedTickets} />
+      <Navbar groupByFunction={groupByHandleFunctionFromChild}  orderByFunction={orderByHandleFunctionFromChild}/>
+      <Body  groupedTickets={groupedTickets}  Users={users}/>
     </div>
   );
 }

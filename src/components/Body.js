@@ -4,14 +4,14 @@ import "./Body.css" ;
 
 
 
-function Body({ groupedTickets}) {
+function Body({ groupedTickets,Users}) {
   // console.log("^")
   // console.log(groupedTickets)
     return (
       <div className="body">
         {Object.keys(groupedTickets).map((groupName) => (
         
-          <KanbanColumn key={groupName} title={groupName} tickets={groupedTickets[groupName]} />
+          <KanbanColumn key={groupName} title={groupName} tickets={groupedTickets[groupName]} Users={Users} />
           
         ))}
         

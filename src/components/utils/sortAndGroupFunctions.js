@@ -25,6 +25,7 @@ export const groupTicketsByStatus = (tickets) => {
     };
     
     export const groupTicketsByPriority = (tickets) => {
+      tickets.sort((a, b) => b.priority - a.priority)
       console.log("*" + tickets)
       const priorityLevels = {
         4: 'Urgent',
@@ -45,8 +46,33 @@ export const groupTicketsByStatus = (tickets) => {
     };
   
   
+  // export const sortTicketsByPriorityDescending = (tickets) => {
+  //   // Assuming each ticket has a 'priority' property.
+  //   console.log("*" + tickets)
+  //   return [...tickets].sort((a, b) => b.priority - a.priority);
+  // };
+
+
   export const sortTicketsByPriorityDescending = (tickets) => {
     // Assuming each ticket has a 'priority' property.
     console.log("*" + tickets)
     return [...tickets].sort((a, b) => b.priority - a.priority);
+  };
+  
+  
+  export const sortTicketsWithinGroupsByPriorityDescending = (groupedTickets) => {
+    const sortedGroups = {};
+    for (const group in groupedTickets) {
+      sortedGroups[group] = groupedTickets[group].slice().sort((a, b) => b.priority - a.priority);
+    }
+    return sortedGroups;
+  };
+  
+  
+  export const sortTicketsWithinGroupsByTitleAscending = (groupedTickets) => {
+    const sortedGroups = {};
+    for (const group in groupedTickets) {
+      sortedGroups[group] = groupedTickets[group].slice().sort((a, b) => a.title.localeCompare(b.title));
+    }
+    return sortedGroups;
   };

@@ -40,11 +40,22 @@
     border-radius: 50%;
   }
   
-  .status-circle {
+  .status-circle-active {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background-color: green;
+    background-color: rgb(59, 238, 59);
+    border: 2px solid white;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+  }
+
+  .status-circle-inactive {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(117, 117, 117);
     border: 2px solid white;
     bottom: 0;
     right: 0;

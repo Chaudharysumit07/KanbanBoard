@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import "./Navbar.css";
 
-function Navbar({ callbackFunction }) {
+function Navbar({ groupByFunction, orderByFunction }) {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const handleButtonClick = () => {
@@ -15,18 +15,22 @@ function Navbar({ callbackFunction }) {
   //   // console.log(`Selected value: ${selectedValue}`);
   // }, [showDropdown]);
 
-  const [selectedValue, setSelectedValue] = useState("status");
+  const [groupByValue, setGroupByValue] = useState("status");
+
+  const [orderByValue, setOrderByValue] = useState("title");
 
   const handleDropdownChange = (event) => {
     const newValue = event.target.value;
-    setSelectedValue(newValue);
+    setGroupByValue(newValue);
+    setOrderByValue(newValue);
     setShowDropdown(false);
   };
 
   useEffect(() => {
     // Call the callback function with the selected value when it changes
-    callbackFunction(selectedValue);
-  }, [callbackFunction, selectedValue, showDropdown]);
+    groupByFunction(groupByValue);
+    orderByFunction(orderByValue);
+  }, [groupByFunction,orderByFunction, groupByValue,orderByValue, showDropdown]);
 
   return (
     <div className="nav-container">
@@ -37,30 +41,33 @@ function Navbar({ callbackFunction }) {
       </div>
 
       {/* {showDropdown && ( */}
-        <div className="dropDownMenu">
-          <ul>
-            <li>
-              Group By
-              <select
-                id="groupby"
-                value={selectedValue}
-                onChange={handleDropdownChange}
-              >
-                <option value="status">Status</option>
-                <option value="priority">Priority</option>
-                <option value="user">Users</option>
-              </select>
-            </li>
-            <li>
-              Order By
-              <select id="orderby">
-                <option value="1">Title</option>
-                <option value="2">Priority</option>
-              </select>
-            </li>
-          </ul>
-        </div>
-    
+      <div className="dropDownMenu">
+        <ul>
+          <li>
+            Group By
+            <select
+              id="groupby"
+              value={groupByValue}
+              onChange={handleDropdownChange}
+            >
+              <option value="status">Status</option>
+              <option value="priority">Priority</option>
+              <option value="user">Users</option>
+            </select>
+          </li>
+          <li>
+            Order By
+            <select
+              id="orderby"
+              value={orderByValue}
+              onChange={handleDropdownChange}
+            >
+              <option value="title">Title</option>
+              <option value="priority">Priority</option>
+            </select>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 }
