@@ -78,7 +78,7 @@ function App() {
   };
 
   return (
-    <div  >
+    <div >
       <Navbar callbackFunction={handleFunctionFromChild}/>
       {/* <Body/> */}
       <Body  groupedTickets={groupedTickets} />

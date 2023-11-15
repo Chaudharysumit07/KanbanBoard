@@ -4,7 +4,7 @@ import "./Body.css" ;
 
 
 
-function Body({ groupedTickets }) {
+function Body({ groupedTickets}) {
   // console.log("^")
   // console.log(groupedTickets)
     return (

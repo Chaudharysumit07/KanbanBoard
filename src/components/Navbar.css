@@ -4,6 +4,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+
 }
 
 /* Navbar style */
@@ -11,6 +12,8 @@
   background-color: #e96767; /* Light gray background color for the navbar */
   overflow: hidden;
   height: 10%;
+  
+ 
   
 }
 
