@@ -19,9 +19,11 @@ function Navbar({ groupByFunction, orderByFunction }) {
 
   const [orderByValue, setOrderByValue] = useState("title");
 
-  const handleDropdownChange = (event) => {
+  const handleDropdownChange = (event,val) => {
     const newValue = event.target.value;
+    if(val===1)
     setGroupByValue(newValue);
+    else
     setOrderByValue(newValue);
     setShowDropdown(false);
   };
@@ -48,7 +50,7 @@ function Navbar({ groupByFunction, orderByFunction }) {
             <select
               id="groupby"
               value={groupByValue}
-              onChange={handleDropdownChange}
+              onChange={(event) => handleDropdownChange(event, 1)}
             >
               <option value="status">Status</option>
               <option value="priority">Priority</option>
@@ -60,7 +62,7 @@ function Navbar({ groupByFunction, orderByFunction }) {
             <select
               id="orderby"
               value={orderByValue}
-              onChange={handleDropdownChange}
+              onChange={(event) => handleDropdownChange(event, 2)}
             >
               <option value="title">Title</option>
               <option value="priority">Priority</option>
