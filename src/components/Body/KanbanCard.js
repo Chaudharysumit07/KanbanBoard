@@ -4,8 +4,7 @@ import "./KanbanCard.css";
 
 function KanbanCard({ id, priority, status, tag, title, userId , userName, isAvail}) {
   console.log();
-  //   let isActive = "active";
-//   let baseIconPath = "C:UsersHPDesktopQuickSell_Assignmentkanbanicons";
+
 
   let priorityIcon;
   switch (priority) {
@@ -48,18 +47,16 @@ function KanbanCard({ id, priority, status, tag, title, userId , userName, isAva
   const activeStatus = isAvail ? "status-circle-active" : "status-circle-inactive";
 
   function convertToInitials(userName) {
-    // Split the name into an array, removing extra spaces before and after the name and between names
+
     const nameParts = userName.trim().split(/\s+/);
   
-    // Get the first letter of each part of the name
+ 
     const initials = nameParts.map(part => part[0].toUpperCase()).join('');
   
     return initials;
   }
   
-  // Example usage:
-//   const initials = convertToInitials('John Doe');
-//   console.log(initials); // Outputs: JD
+
 
   return (
     <div className="card">
@@ -67,7 +64,7 @@ function KanbanCard({ id, priority, status, tag, title, userId , userName, isAva
         <span className="card-id">{id}</span>
         <span className="user-id">{convertToInitials(userName)}</span>
         <div class="icon-container">
-          <img src="https://cdn2.iconfinder.com/data/icons/flatfaces-everyday-people-square/128/beard_male_man_face_avatar-512.png" />
+          <img src="https://img.icons8.com/stickers/100/user-male-circle-skin-type-1.png" />
           <div className={activeStatus}></div>
         </div>
       </div>

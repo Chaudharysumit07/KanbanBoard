@@ -9,11 +9,7 @@ function Navbar({ groupByFunction, orderByFunction }) {
     setShowDropdown(!showDropdown); // Toggle the dropdown visibility
   };
 
-  // useEffect(() => {
-  //   // You can perform additional actions when showDropdown or selectedValue changes
-  //   // console.log(`Dropdown visibility: ${showDropdown}`);
-  //   // console.log(`Selected value: ${selectedValue}`);
-  // }, [showDropdown]);
+ 
 
   const [groupByValue, setGroupByValue] = useState("status");
 
@@ -34,6 +30,8 @@ function Navbar({ groupByFunction, orderByFunction }) {
     orderByFunction(orderByValue);
   }, [groupByFunction,orderByFunction, groupByValue,orderByValue, showDropdown]);
 
+  // const dropMenuClass= showDropdown ? 
+
   return (
     <div className="nav-container">
       <div class="navbar">
@@ -42,8 +40,10 @@ function Navbar({ groupByFunction, orderByFunction }) {
         </button>
       </div>
 
-     {showDropdown && ( 
-      <div className="dropDownMenu">
+
+
+     
+      <div className="dropDownMenu" style={{ visibility: showDropdown ? 'visible' : 'hidden' }}>
         <ul>
           <li>
             Group By
@@ -69,7 +69,7 @@ function Navbar({ groupByFunction, orderByFunction }) {
             </select>
           </li>
         </ul>
-      </div> )}
+      </div> 
     </div>
   );
 }

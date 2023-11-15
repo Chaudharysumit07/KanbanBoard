@@ -1,4 +1,4 @@
-/* Container for navbar and button */
+
 .nav-container {
   
   overflow: hidden;
@@ -11,7 +11,7 @@
 
 /* Navbar style */
 .navbar {
-  background-color: #e96767; /* Light gray background color for the navbar */
+  background-color: #ffffff; 
   overflow: hidden;
   height: 10%;
   
@@ -28,7 +28,7 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
+  font-size: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px #888888;
   margin: 10px 10px 10px 40px; /* Adjusted margin */
@@ -44,26 +44,58 @@
   background-color: rgb(236, 238, 245);
   border-radius: 5px;
   box-shadow: 0px 0px 5px #888888;
-  width:15%;
+  width:20%;
   margin-left: 40px;
   overflow: hidden;
-  color: #888888;
+  color: #4e4d4d;
   position: relative;
   z-index: 10;
+  
   
 
 }
 
+
+
+
 .dropDownMenu li{
   padding: 10px 10px 10px 10px;
   margin:5px;
-  font-size: 11px;
+  font-size: 15px;
 }
 
 .dropDownMenu select{
   float: right;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   background-color: rgb(245, 246, 248);
-  padding: 0px 5px;
+  padding: 5px 5px;
+  /* box-shadow: 0px 0px 5px #888888; */
+  border-radius: 10px;
+  border-color: rgb(212, 210, 210) ;
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .dropDownMenu {
+    width: 80%;
+    margin-left: 0;
+    /* height:40%; */
+  }
+
+  .dropDownMenu li {
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+  }
+
+  .dropDownMenu select {
+    float: none; 
+    width: 100%; 
+    margin-top: 10px;
+  }
+
+  #groupbby option{
+    width: 100%; 
+  }
 }

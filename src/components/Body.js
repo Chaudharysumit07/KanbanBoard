@@ -5,8 +5,7 @@ import "./Body.css" ;
 
 
 function Body({ groupedTickets,Users}) {
-  // console.log("^")
-  // console.log(groupedTickets)
+  
     return (
       <div className="body">
         {Object.keys(groupedTickets).map((groupName) => (
@@ -17,9 +16,7 @@ function Body({ groupedTickets,Users}) {
         
       </div>
 
-    // <div className='body'>
-    //     Hello Body
-    // </div>
+  
     );
   }
   

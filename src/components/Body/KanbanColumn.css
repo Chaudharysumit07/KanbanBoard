@@ -20,3 +20,23 @@
     padding: 10px;
     color: grey;
 }
+
+@media only screen and (max-width: 600px) {
+    .kanban-column {
+      /* width: 100vw; Adjust the width for smaller screens */
+    }
+  
+    .headerCard {
+      flex-direction: column; /* Stack items vertically in mobile view */
+      padding: 5px; /* Adjust padding for smaller screens */
+    }
+  
+    .columnName {
+      font-size: medium; /* Adjust font size for smaller screens */
+      margin-bottom: 5px; /* Add some space between items */
+    }
+  
+    .ticketCount {
+      padding: 5px; /* Adjust padding for smaller screens */
+    }
+  }
