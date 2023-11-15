@@ -42,7 +42,7 @@ function Navbar({ groupByFunction, orderByFunction }) {
         </button>
       </div>
 
-      {/* {showDropdown && ( */}
+     {showDropdown && ( 
       <div className="dropDownMenu">
         <ul>
           <li>
@@ -69,7 +69,7 @@ function Navbar({ groupByFunction, orderByFunction }) {
             </select>
           </li>
         </ul>
-      </div>
+      </div> )}
     </div>
   );
 }
